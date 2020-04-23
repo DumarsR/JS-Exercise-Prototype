@@ -39,9 +39,46 @@ Airplane.prototype.land = function () {
         + It should return a string with `name` and `age`. Example: "Mary, 50"
 */
 
-function Person() {
-
+function Person(attributes) {
+  this.name = 'Neo';
+  this.age = 20;
+  this.stomach = [];
 }
+
+Person.prototype.eat = function(edible){
+  if(this.stomach.length < 10){
+    this.stomach.push(edible);
+  }
+}
+
+Person.prototype.poop = function(){
+  this.stomach = [];
+}
+
+Person.prototype.toString = function(){
+  return `${this.name}, ${this.age}`;
+}
+
+const personOne = new Person({
+  name: 'Neo',
+  age: 20,
+  
+});
+
+console.log(personOne.toString());
+personOne.eat('ramen');
+personOne.eat('pizza');
+personOne.eat('Taco');
+personOne.eat('Bread');
+personOne.eat('OJ');
+personOne.eat('Soda');
+personOne.eat('Water');
+personOne.eat('poptarts');
+personOne.eat('apples');
+personOne.eat('oranges');
+console.log(personOne.stomach);
+personOne.poop();
+console.log(personOne.stomach);
 
 /*
   TASK 2
@@ -57,9 +94,26 @@ function Person() {
         + The `drive` method should return a string "I ran out of fuel at x miles!" x being `odometer`.
 */
 
-function Car() {
-
+function Car(attributes) {
+  this.model = 'BatMobile';
+  this.milesPerGallon = 20;
+  this.tank = 0;
+  this.odometer = 0;
+  
 }
+
+Car.prototype.fill = function(gallons){
+  this.add = 10;
+  return this.tank + this.add;
+}
+
+const carOne = new Car({
+  model: 'BatMobile',
+  milesPerGallon: 20,
+});
+
+console.log(carOne.fill);
+console.log(carOne.fill);
 
 /*
   TASK 3
@@ -68,15 +122,23 @@ function Car() {
     - Besides the methods on Person.prototype, babies have the ability to `.play()`:
         + Should return a string "Playing with x", x being the favorite toy.
 */
-function Baby() {
-
+function Baby(attributes) {
+  this.name = 'Lucy';
+  this.age = 5;
+  this.favoriteToy = 'trains';
 }
+
+Baby.prototype.play = function(){
+  return `Playing with ${this.favoriteToy}, ${this.favoriteToy} being the favorite toy`;
+}
+
+console.log(Baby.play);
 
 /* 
   TASK 4
 
   In your own words explain the four principles for the "this" keyword below:
-  1. 
+  1. A pronoun to use in place of an object
   2. 
   3. 
   4. 
